@@ -26,13 +26,13 @@ def go_through_all_the_lines
 end
 
 go_through_all_the_lines
-
+puts $new_hash
 
 def send_email_to_line
 	$new_hash.each{|mairie, email|
 	$gmail.deliver do
 	#Ceci est mon adresse gmail, remplacer par #{email} pour envoyer aux mairies
-  	to "jmblintest@gmail.com"
+  	to "#{email}"
   	subject "Formation au code gratuite"
   	html_part do
   	content_type 'text/html; charset=UTF-8'
@@ -43,6 +43,7 @@ La formation s'appelle The Hacking Project (http://thehackingproject.org/). Nous
 Nous vous contactons pour vous parler du projet, et vous dire que vous pouvez ouvrir une cellule à #{mairie}, où vous pouvez former gratuitement 6 personnes (ou plus), qu'elles soient débutantes, ou confirmées.<br/> 
 Le modèle d'éducation de The Hacking Project n'a pas de limite en terme de nombre de moussaillons (c'est comme cela que l'on appelle les élèves), donc nous serions ravis de travailler avec #{mairie} !<br/>
 Charles, co-fondateur de <em>The Hacking Project<em> pourra répondre à toutes vos questions : 06.95.46.60.80.</p>"
+	puts email
 	end
 	end
 	#Compteur pour ne pas se faire bloquer son compte

@@ -15,7 +15,7 @@ def get_the_email_of_a_townhall_from_its_webpage(mailcheck) #def de la methode
 doc = Nokogiri::HTML(open(mailcheck))
 doc.xpath('//p[@class="Style22"]').each do |email| #ciblé l'email dans la class et appliquer un each do
   if email.text.include? "@" #si l'email contient un @, ecrire email
-   email = email.text
+   email = email.text[1..-1]
    town = doc.css("h1").text[11..-9]
    $mon_hash[town] = email
     end
